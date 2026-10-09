@@ -2,12 +2,435 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <!-- <link rel="icon" type="image/svg+xml" href="/" /> -->
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>RK devloper - Creative Developer | Designer</title>
+    <meta name="description" content="Rehan Pathan - Creative Developer & Designer. Portfolio showcasing web development, 3D design, Java & DSA, and AI/ML skills." />
+    <title>Rehan Pathan - Creative Developer | Designer</title>
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Geist:wght@100..900&display=swap" rel="stylesheet" />
+
+    <!-- Font Awesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" />
+
+    <!-- Stylesheet -->
+    <link rel="stylesheet" href="css/style.css" />
+
+    <!-- Three.js ES Module Import Map (Pure Vanilla JS) -->
+    <script type="importmap">
+      {
+        "imports": {
+          "three": "https://cdn.jsdelivr.net/npm/three@0.168.0/build/three.module.js",
+          "three/addons/": "https://cdn.jsdelivr.net/npm/three@0.168.0/examples/jsm/"
+        }
+      }
+    </script>
   </head>
   <body>
-    <div id="root"></div>
-    <script type="module" src="/src/main.tsx"></script>
+
+    <!-- ========== LOADING SCREEN ========== -->
+    <div id="loading-header" class="loading-header">
+      <a href="#" class="loader-title" data-cursor="disable">RK developer</a>
+      <div class="loaderGame" id="loaderGame">
+        <div class="loaderGame-container">
+          <div class="loaderGame-in" id="loaderGameIn"></div>
+          <div class="loaderGame-ball"></div>
+        </div>
+      </div>
+    </div>
+
+    <div id="loading-screen" class="loading-screen">
+      <div class="loading-marquee">
+        <div class="marquee-track">
+          <span>A Creative Developer</span>
+          <span>A Creative Designer</span>
+          <span>A Creative Developer</span>
+          <span>A Creative Designer</span>
+          <span>A Creative Developer</span>
+          <span>A Creative Designer</span>
+        </div>
+      </div>
+      <div class="loading-wrap" id="loadingWrap">
+        <div class="loading-hover" id="loadingHover"></div>
+        <div class="loading-button" id="loadingButton">
+          <div class="loading-container">
+            <div class="loading-content">
+              <div class="loading-content-in">
+                Loading <span id="loadingPercent">0%</span>
+              </div>
+            </div>
+            <div class="loading-box"></div>
+          </div>
+          <div class="loading-content2">
+            <span>Welcome</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ========== CURSOR ========== -->
+    <div class="cursor-main" id="cursor"></div>
+
+    <!-- ========== NAVBAR ========== -->
+    <div class="header" id="header">
+      <a href="#" class="navbar-title" data-cursor="disable">RK developer</a>
+      <a href="mailto:example@mail.com" class="navbar-connect" data-cursor="disable">example@mail.com</a>
+      <ul>
+        <li>
+          <a data-href="#about" href="#about">
+            <div class="hover-link" data-cursor="disable">
+              <div class="hover-in">ABOUT <div>ABOUT</div></div>
+            </div>
+          </a>
+        </li>
+        <li>
+          <a data-href="#work" href="#work">
+            <div class="hover-link" data-cursor="disable">
+              <div class="hover-in">WORK <div>WORK</div></div>
+            </div>
+          </a>
+        </li>
+        <li>
+          <a data-href="#contact" href="#contact">
+            <div class="hover-link" data-cursor="disable">
+              <div class="hover-in">CONTACT <div>CONTACT</div></div>
+            </div>
+          </a>
+        </li>
+      </ul>
+    </div>
+
+    <div class="landing-circle1"></div>
+    <div class="landing-circle2"></div>
+    <div class="nav-fade"></div>
+
+    <!-- ========== SOCIAL ICONS ========== -->
+    <div class="icons-section">
+      <div class="social-icons" data-cursor="icons" id="social">
+        <span>
+          <a href="https://github.com" target="_blank" aria-label="GitHub">
+            <i class="fab fa-github"></i>
+          </a>
+        </span>
+        <span>
+          <a href="https://www.linkedin.com" target="_blank" aria-label="LinkedIn">
+            <i class="fab fa-linkedin-in"></i>
+          </a>
+        </span>
+        <span>
+          <a href="https://x.com" target="_blank" aria-label="Twitter">
+            <i class="fab fa-x-twitter"></i>
+          </a>
+        </span>
+        <span>
+          <a href="https://www.instagram.com" target="_blank" aria-label="Instagram">
+            <i class="fab fa-instagram"></i>
+          </a>
+        </span>
+      </div>
+      <a class="resume-button" href="#" data-cursor="disable">
+        <div class="hover-link">
+          <div class="hover-in">RESUME <div>RESUME</div></div>
+        </div>
+        <span><i class="fa-regular fa-file-lines"></i></span>
+      </a>
+    </div>
+
+    <!-- ========== 3D CHARACTER MODEL (Pure Three.js) ========== -->
+    <div class="character-container" id="characterContainer">
+      <div class="character-model" id="characterModel">
+        <div class="character-rim"></div>
+        <div class="character-hover" id="characterHover"></div>
+      </div>
+    </div>
+
+    <!-- ========== MAIN CONTENT ========== -->
+    <main class="main-body" id="mainBody">
+      <div id="smooth-wrapper">
+        <div id="smooth-content">
+          <div class="container-main">
+
+            <!-- LANDING SECTION -->
+            <div class="landing-section" id="landingDiv">
+              <div class="landing-container">
+                <div class="landing-intro">
+                  <h2>Hello! I'm</h2>
+                  <h1>REHAN<br /><span>PATHAN</span></h1>
+                </div>
+                <div class="landing-info">
+                  <h3>A Creative</h3>
+                  <h2 class="landing-info-h2">
+                    <div class="landing-h2-1">Designer</div>
+                    <div class="landing-h2-2">Developer</div>
+                  </h2>
+                  <h2>
+                    <div class="landing-h2-info">Developer</div>
+                    <div class="landing-h2-info-1">Designer</div>
+                  </h2>
+                </div>
+              </div>
+            </div>
+
+            <!-- ABOUT SECTION -->
+            <div class="about-section" id="about">
+              <div class="about-me">
+                <h3 class="title">About Me</h3>
+                <p class="para">
+                  I am Rehan Pathan, a passionate Software Developer with a strong focus
+                  on building efficient and scalable applications. I have a deep interest
+                  in problem-solving through Java and Data Structures &amp; Algorithms. Beyond
+                  conventional development, I am also exploring the exciting world of
+                  Artificial Intelligence and Machine Learning.
+                </p>
+              </div>
+            </div>
+
+            <!-- WHAT I DO SECTION -->
+            <div class="whatIDO">
+              <div class="what-box">
+                <h2 class="title">
+                  W<span class="hat-h2">HAT</span>
+                  <div>I<span class="do-h2"> DO</span></div>
+                </h2>
+              </div>
+              <div class="what-box">
+                <div class="what-box-in">
+                  <div class="what-border2">
+                    <svg width="100%">
+                      <line x1="0" y1="0" x2="0" y2="100%" stroke="white" stroke-width="2" stroke-dasharray="7,7"/>
+                      <line x1="100%" y1="0" x2="100%" y2="100%" stroke="white" stroke-width="2" stroke-dasharray="7,7"/>
+                    </svg>
+                  </div>
+                  <div class="what-content what-noTouch">
+                    <div class="what-border1">
+                      <svg height="100%">
+                        <line x1="0" y1="0" x2="100%" y2="0" stroke="white" stroke-width="2" stroke-dasharray="6,6"/>
+                        <line x1="0" y1="100%" x2="100%" y2="100%" stroke="white" stroke-width="2" stroke-dasharray="6,6"/>
+                      </svg>
+                    </div>
+                    <div class="what-corner"></div>
+                    <div class="what-content-in">
+                      <h3>DEVELOP</h3>
+                      <h4>Description</h4>
+                      <p>Building high performance, scalable, and responsive web applications with modern frontend &amp; backend architectures.</p>
+                      <h5>Skillset &amp; tools</h5>
+                      <div class="what-content-flex">
+                        <div class="what-tags">JavaScript</div>
+                        <div class="what-tags">TypeScript</div>
+                        <div class="what-tags">Three.js</div>
+                        <div class="what-tags">CSS</div>
+                        <div class="what-tags">Node.js</div>
+                        <div class="what-tags">Next.js</div>
+                        <div class="what-tags">Express.js</div>
+                        <div class="what-tags">PHP</div>
+                        <div class="what-tags">MySQL</div>
+                      </div>
+                      <div class="what-arrow"></div>
+                    </div>
+                  </div>
+                  <div class="what-content what-noTouch">
+                    <div class="what-border1">
+                      <svg height="100%">
+                        <line x1="0" y1="100%" x2="100%" y2="100%" stroke="white" stroke-width="2" stroke-dasharray="6,6"/>
+                      </svg>
+                    </div>
+                    <div class="what-corner"></div>
+                    <div class="what-content-in">
+                      <h3>DESIGN</h3>
+                      <h4>Description</h4>
+                      <p>Crafting stunning 3D models, smooth interactions, character animations, and intuitive UI/UX design experiences.</p>
+                      <h5>Skillset &amp; tools</h5>
+                      <div class="what-content-flex">
+                        <div class="what-tags">Blender</div>
+                        <div class="what-tags">Zbrush</div>
+                        <div class="what-tags">UI Design</div>
+                        <div class="what-tags">Motion</div>
+                        <div class="what-tags">Rigging</div>
+                        <div class="what-tags">3D Animation</div>
+                        <div class="what-tags">Character Design</div>
+                        <div class="what-tags">Modelling</div>
+                      </div>
+                      <div class="what-arrow"></div>
+                    </div>
+                  </div>
+                  <div class="what-content what-noTouch">
+                    <div class="what-border1">
+                      <svg height="100%">
+                        <line x1="0" y1="100%" x2="100%" y2="100%" stroke="white" stroke-width="2" stroke-dasharray="6,6"/>
+                      </svg>
+                    </div>
+                    <div class="what-corner"></div>
+                    <div class="what-content-in">
+                      <h3>JAVA &amp; DSA</h3>
+                      <h4>Description</h4>
+                      <p>Strong foundation in data structures and algorithms using Java. Passionate about solving complex problems efficiently.</p>
+                      <h5>Skillset &amp; tools</h5>
+                      <div class="what-content-flex">
+                        <div class="what-tags">Java</div>
+                        <div class="what-tags">Data Structures</div>
+                        <div class="what-tags">Algorithms</div>
+                        <div class="what-tags">OOP</div>
+                        <div class="what-tags">Problem Solving</div>
+                      </div>
+                      <div class="what-arrow"></div>
+                    </div>
+                  </div>
+                  <div class="what-content what-noTouch">
+                    <div class="what-border1">
+                      <svg height="100%">
+                        <line x1="0" y1="100%" x2="100%" y2="100%" stroke="white" stroke-width="2" stroke-dasharray="6,6"/>
+                      </svg>
+                    </div>
+                    <div class="what-corner"></div>
+                    <div class="what-content-in">
+                      <h3>AI &amp; ML</h3>
+                      <h4>Description</h4>
+                      <p>Exploring Artificial Intelligence and Machine Learning. Building intelligent models for predictive analysis and data processing.</p>
+                      <h5>Skillset &amp; tools</h5>
+                      <div class="what-content-flex">
+                        <div class="what-tags">Python</div>
+                        <div class="what-tags">Machine Learning</div>
+                        <div class="what-tags">Deep Learning</div>
+                        <div class="what-tags">TensorFlow</div>
+                        <div class="what-tags">Pandas</div>
+                        <div class="what-tags">NumPy</div>
+                      </div>
+                      <div class="what-arrow"></div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- CAREER SECTION -->
+            <div class="career-section section-container">
+              <div class="career-container">
+                <h2>My career <span>&amp;</span><br />experience</h2>
+                <div class="career-info">
+                  <div class="career-timeline">
+                    <div class="career-dot"></div>
+                  </div>
+                  <div class="career-info-box">
+                    <div class="career-info-in">
+                      <div class="career-role">
+                        <h4>Position In Company</h4>
+                        <h5>Company Name</h5>
+                      </div>
+                      <h3>20XX</h3>
+                    </div>
+                    <p>Designed and built scalable user interfaces and performant frontend experiences with smooth interactions.</p>
+                  </div>
+                  <div class="career-info-box">
+                    <div class="career-info-in">
+                      <div class="career-role">
+                        <h4>Position In Company</h4>
+                        <h5>Company Name</h5>
+                      </div>
+                      <h3>20XX</h3>
+                    </div>
+                    <p>Engineered full-stack features, integrated RESTful APIs, optimized database operations, and problem solving in Java &amp; DSA.</p>
+                  </div>
+                  <div class="career-info-box">
+                    <div class="career-info-in">
+                      <div class="career-role">
+                        <h4>Creative Developer</h4>
+                        <h5>Self-Employed / Freelance</h5>
+                      </div>
+                      <h3>NOW</h3>
+                    </div>
+                    <p>Building high-end creative websites, 3D interactive web experiences, and exploring Artificial Intelligence &amp; Machine Learning.</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- WORK SECTION -->
+            <div class="work-section" id="work">
+              <div class="work-container section-container">
+                <h2>My <span>Work</span></h2>
+                <div class="work-flex">
+                  <div class="work-box">
+                    <div class="work-info">
+                      <div class="work-title"><h3>01</h3><div><h4>Project 01</h4><p>Web Application</p></div></div>
+                      <h4>Tools and features</h4><p>JavaScript, TypeScript, Three.js, CSS</p>
+                    </div>
+                    <div class="work-image"><a class="work-image-in" href="#" target="_blank" data-cursor="disable"><img src="images/placeholder.webp" alt="Project 1" /></a></div>
+                  </div>
+                  <div class="work-box">
+                    <div class="work-info">
+                      <div class="work-title"><h3>02</h3><div><h4>Project 02</h4><p>3D Interactive Portfolio</p></div></div>
+                      <h4>Tools and features</h4><p>JavaScript, Three.js, GSAP, WebGL</p>
+                    </div>
+                    <div class="work-image"><a class="work-image-in" href="#" target="_blank" data-cursor="disable"><img src="images/placeholder.webp" alt="Project 2" /></a></div>
+                  </div>
+                  <div class="work-box">
+                    <div class="work-info">
+                      <div class="work-title"><h3>03</h3><div><h4>Project 03</h4><p>Fullstack Platform</p></div></div>
+                      <h4>Tools and features</h4><p>Node.js, Express, MongoDB, MySQL</p>
+                    </div>
+                    <div class="work-image"><a class="work-image-in" href="#" target="_blank" data-cursor="disable"><img src="images/placeholder.webp" alt="Project 3" /></a></div>
+                  </div>
+                  <div class="work-box">
+                    <div class="work-info">
+                      <div class="work-title"><h3>04</h3><div><h4>Project 04</h4><p>Java &amp; DSA Algorithms</p></div></div>
+                      <h4>Tools and features</h4><p>Java, Data Structures, OOP, Problem Solving</p>
+                    </div>
+                    <div class="work-image"><a class="work-image-in" href="#" target="_blank" data-cursor="disable"><img src="images/placeholder.webp" alt="Project 4" /></a></div>
+                  </div>
+                  <div class="work-box">
+                    <div class="work-info">
+                      <div class="work-title"><h3>05</h3><div><h4>Project 05</h4><p>Machine Learning Model</p></div></div>
+                      <h4>Tools and features</h4><p>Python, TensorFlow, Scikit-learn, Pandas</p>
+                    </div>
+                    <div class="work-image"><a class="work-image-in" href="#" target="_blank" data-cursor="disable"><img src="images/placeholder.webp" alt="Project 5" /></a></div>
+                  </div>
+                  <div class="work-box">
+                    <div class="work-info">
+                      <div class="work-title"><h3>06</h3><div><h4>Project 06</h4><p>3D Character Design</p></div></div>
+                      <h4>Tools and features</h4><p>Blender, 3D Modeling, Rigging, Animation</p>
+                    </div>
+                    <div class="work-image"><a class="work-image-in" href="#" target="_blank" data-cursor="disable"><img src="images/placeholder.webp" alt="Project 6" /></a></div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- CONTACT SECTION -->
+            <div class="contact-section section-container" id="contact">
+              <div class="contact-container">
+                <h3>Contact</h3>
+                <div class="contact-flex">
+                  <div class="contact-box">
+                    <h4>Email</h4>
+                    <p><a href="mailto:example@mail.com" data-cursor="disable">example@mail.com</a></p>
+                    <h4>Phone</h4>
+                    <p><a href="tel:+919999999999" data-cursor="disable">+91 99999 99999</a></p>
+                  </div>
+                  <div class="contact-box">
+                    <h4>Social</h4>
+                    <a href="https://github.com" target="_blank" data-cursor="disable" class="contact-social">Github <i class="fa-solid fa-arrow-up-right-from-square" style="font-size:0.8em"></i></a>
+                    <a href="https://www.linkedin.com" target="_blank" data-cursor="disable" class="contact-social">Linkedin <i class="fa-solid fa-arrow-up-right-from-square" style="font-size:0.8em"></i></a>
+                    <a href="https://x.com" target="_blank" data-cursor="disable" class="contact-social">Twitter <i class="fa-solid fa-arrow-up-right-from-square" style="font-size:0.8em"></i></a>
+                    <a href="https://www.instagram.com" target="_blank" data-cursor="disable" class="contact-social">Instagram <i class="fa-solid fa-arrow-up-right-from-square" style="font-size:0.8em"></i></a>
+                  </div>
+                  <div class="contact-box">
+                    <h2>Designed and Developed <br />by <span>Rehan Pathan</span></h2>
+                    <h5><i class="fa-regular fa-copyright"></i> 2024</h5>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </main>
+
+    <!-- GSAP via CDN (Free plugins only) -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+    <!-- Main Pure Vanilla JS Application -->
+    <script type="module" src="js/main.js"></script>
   </body>
 </html>
